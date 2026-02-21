@@ -1,0 +1,113 @@
+// Przypisanie pinów Arduino do segmentów
+// Jeśli cyfry będą "koślawe", pozmieniaj numery pinów tutaj:
+const int a = 2; // góra
+const int b = 3; // prawa góra
+const int c = 4; // prawa dół
+const int d = 5; // dół
+const int e = 6; // lewa dół
+const int f = 7; // lewa góra
+const int g = 8; // środek
+
+void setup() {
+  // Ustawiamy piny 2,3,4,5,6,7,8 jako wyjścia
+  for (int i = 2; i <= 8; i++) {
+    pinMode(i, OUTPUT);
+  }
+  pinMode(12, INPUT_PULLUP);
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
+
+  
+}
+
+// Funkcja pomocnicza do ustawiania segmentów
+void wyswietl(int sa, int sb, int sc, int sd, int se, int sf, int sg) {
+  digitalWrite(a, sa);
+  digitalWrite(b, sb);
+  digitalWrite(c, sc);
+  digitalWrite(d, sd);
+  digitalWrite(e, se);
+  digitalWrite(f, sf);
+  digitalWrite(g, sg);
+}
+
+void loop() {
+  // Cyfra 
+  digitalWrite(10,HIGH);
+
+  if(digitalRead(12) == LOW){
+  
+  wyswietl(0,1,1,1,1,1,0);
+
+  digitalWrite(10,HIGH);
+
+  delay(1000);
+  digitalWrite(10,LOW);
+  delay(1000);
+  // Cyfra 1
+  wyswietl(0,0,1,1,1,0,1);
+  digitalWrite(10,HIGH);
+
+  delay(1000);
+  digitalWrite(10,LOW);
+   delay(1000); 
+  // Cyfra 2
+  wyswietl(0,1,1,1,0,1,1);
+  digitalWrite(10,HIGH);
+
+  delay(1000);
+  digitalWrite(10,LOW);
+  delay(1000);
+  // Cyfra 3
+
+  wyswietl(1,1,0,1,0,1,1);
+
+  digitalWrite(10,HIGH);
+
+  delay(1000);
+  digitalWrite(10,LOW);
+  delay(1000);
+  // Cyfra 4
+  wyswietl(0,0,1,0,0,0,1);
+
+  digitalWrite(10,HIGH);
+
+  delay(1000);
+  digitalWrite(10,LOW);
+  delay(1000);
+  // Cyfra 5
+  wyswietl(1,1,1,0,1,1,1);
+
+  digitalWrite(10,HIGH);
+
+  delay(1000);
+  digitalWrite(10,LOW);
+  delay(1000);
+  wyswietl(0,0,0,0,0,0,0);
+  digitalWrite(11,HIGH);
+
+  wyswietl(0,1,1,1,1,1,0);
+  delay(1000);
+
+  wyswietl(0,0,1,1,1,0,1);
+  delay(1000);
+
+  wyswietl(0,1,1,1,0,1,1);
+  delay(1000);
+
+  wyswietl(1,1,0,1,0,1,1);
+  delay(1000);
+
+  wyswietl(0,0,1,0,0,0,1);
+  delay(1000);
+
+  wyswietl(1,1,1,0,1,1,1);
+  delay(1000);
+
+
+
+  digitalWrite(11,LOW);
+
+  }
+
+}
